@@ -1,0 +1,70 @@
+# Sample file showing .mdm file format
+
+# Brief introduction to the "Baby" Mark I:
+#
+#	The main memory and registers were Williams tubes,
+#	capable of representing 32 bits on a line.  The three
+#	tubes used in the prototype machine were the A tube
+#	(accumulator), C tube (control), and S tube (store).
+#	The A tube had a single 32-bit line; the S tube had
+#	32 such lines, and the C tube had two: the "control
+#	instruction" line (CI) -- "program counter in modern
+#	terminology -- and the "present instruction" line (PI).
+#
+#	Because the CI was incremented at the *beginning* of
+#	the fetch/execute cycle, programs would usually start 
+#	on line 1, rather than line 0 (a program starting at
+#	line 0 would need CI initially to be -1 in order to
+#	execute properly).
+#
+#	The instruction format consisted of a 3-bit op-code
+#	and an 13 bit address field (the most significant 16 bits
+#	of the instruction word and 8 bits of the address field 
+#	were ignored).  Two's complement representation was used 
+#	for negative data values.
+#
+#	    Op code     operation      (original notation)
+#	       0           jump              (s, C)
+#	       1           relative jump     (c+s, C)
+#	       2           load negative     (-s, A)
+#	       3           store accumulator (a, S)
+#	       4           subtract          (a-s, A)
+#	       5           same as 4 (undocumented)
+#	       6         ++CI, if a < 0      (Test)
+#	       7           stop              (Stop)
+
+# Comments begin with a '#'; blank lines are ignored
+
+# The letter 'A', 'C' or 'S' followed by a colon, specifies
+# that the values following are placed in the specified tube.
+#
+# For example, the following lines put the value -2 into the
+# A tube:
+A:
+01111111111111111111111111111111
+#
+# Note that, in the spirit of the original Manchester machines,
+# all numbers are expressed in "backwards binary", with the
+# least significant bit on the left.
+
+# Unspecified tubes or lines will not be touched.
+#
+# For example, the following lines clear the A tube and
+# the CI line, leaving the contents of the PI line and the
+# S tube alone.
+A:
+0	# note that all 32 bits need not be specified
+C:	# and that end-of-line comments are allowed
+0
+
+# A number after the tube letter specifies the initial line
+# at which the values are to be placed.  Any positive integer
+# is accepted (modulo the size of the tube).
+#
+# For example, the following lines place the data values
+# 4, 2^18 and -(2^18) in lines 22, 23 and 24 of the S tube.
+S22:
+001
+0000000000000000001
+00000000000000000011111111111111
+
