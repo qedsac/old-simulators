@@ -22,7 +22,7 @@ The [Lazarus](https://www.lazarus-ide.org/) project provides a free, Delphi-comp
 
 ## `java-ssem`
 
-The included `README` file describes this project in detail.  The [`noweb`](https://www.cs.tufts.edu/~nr/noweb/) system for literate programming is still supported, but the Pretzel system, used for typesetting the code chunks in an Algol-like style, is no longer available (but not absolutely necessary).  The enclosed `ssem.pdf` document documents and describes the Java source code.
+The included `README` file describes this project in detail.  The [`noweb`](https://www.cs.tufts.edu/~nr/noweb/) system for literate programming is still supported, but the Pretzel system, used for typesetting the code chunks in an Algol-like style, is no longer available (but not absolutely necessary).  The enclosed `ssem.pdf` documents and describes the Java source code.
 
 The program was compiled using a Java v1.1 compiler.  Current versions of Java have changed significantly since then, and the code can no longer be compiled by current compilers.  However, the `.class` files still execute properly.  If you are interested in updating the code, but not interested in literate programming, you can modify the `ssem.java` file and ignore the `ssem.nw` file.  I would appreciate [hearing from](mailto:leew@kean.edu) anyone who succeeds in updating the Java source.
 
