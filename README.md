@@ -43,5 +43,4 @@ The DOS versions were written using [Aztec C](https://www.aztecmuseum.ca/compile
 
 The makefiles are  compatible with the “standard” Unix `make` utility, but do not work with the `MAKE.EXE` provided with the compilers available at [www.aztecmuseum.ca](https://www.aztecmuseum.ca).  The `proto` utility is not provided with v5.2a, but the `proto.h` file does not need to be rebuilt if no new functions are added.
 The source code for the graphics routines used in the DOS SSEM simulator is included with the v5.2a download.
-using K&R-style function parameter declarations.
 
