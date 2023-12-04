@@ -1,0 +1,53 @@
+NAME
+
+edsac -- EDSAC simulator
+
+SYNOPSIS
+
+edsac [ [ -csr01] [ file ] ] ...
+
+DESCRIPTION
+
+Edsac simulates the execution of the EDSAC computer.  The files
+on the command line represent tapes to be set up in the tape
+reader and the options -c, -s, and -r represent buttons on the
+machine's control panel.  A file argument means "Place this 'tape'
+in the reader"; an option means "Press this button."  The "button"
+options are interpreted as follows:
+
+-c	Clear button.  Clear the store & the registers.
+
+-s	Start button.  Load and execute the initial orders.
+
+-r  Reset button.  Restart the machine after it stops.
+
+The September 1949 initial orders are used by default unless one of the
+following options is specified:
+
+-0	Use the May 1949 initial orders for the following programs.
+-1	Use the September 1949 initial orders for the following programs.
+
+If no files are specified or - is used as a file name, the standard input
+is read.  If there are no files or options on the command line, the clear
+and start buttons are automatically pressed.
+
+EXAMPLES
+
+Punch "program.e", and execute it, printing the results:
+
+punch program.e | edsac | tprint
+
+Execute the program in "tape" and then run a post-mortem routine ("post").
+
+edsac tape -cs post -r | tprint
+
+SEE ALSO
+
+punch(EDSAC), tprint(EDSAC)
+
+BUGS
+
+The use of command line arguments to simulate pressing buttons is awkward,
+to say the least.  In particular, it is difficult to remember to put -s
+at the end of the command line when files are specified or the -0 option is
+being used.

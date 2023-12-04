@@ -1,0 +1,49 @@
+NAME
+
+punch -- EDSAC keyboard perforator
+
+SYNOPSIS
+
+punch [ [ -xstring ] [ file ] ] ...
+
+
+DESCRIPTION
+
+Punch reads characters from the named files and translates them to
+their equivalent in the EDSAC perforator code.  Lower case letters
+are translated to upper case; illegal characters are ignored.  If
+- is specified as a file name, the standard input is read.  The -x
+option is used to "punch" strings directly.  Alternative characters
+and escape sequences are provided for the EDSAC's special codes that
+are not normally included in modern computer character sets.
+
+EDSAC Code      Escape Sequence    Alternative
+Erase                 \e                *
+Blank tape           none               .
+Pi                    \p                #
+Theta                 \h                @
+Delta                 \d                &
+Phi                   \f                !
+
+By convention, the extenstions ".e0" and ".e1" are used for programs
+that use the May and the September 1949 versions, respectively, of the
+EDSAC initial orders.  ".e" is also used as a synonym for ".e1".
+
+EXAMPLES
+
+Punch "file1" and save the results in the file "tape1":
+
+punch file1 >tape1
+
+Punch and execute a complete program that loads a master routine ("master.e")
+with a single auxiliary routine ("aux.e") at location 56:
+
+punch -x..PKT56K aux.e -x..PZ master.e -xEZPF | edsac | tprint
+
+SEE ALSO
+
+edsac(EDSAC), tprint(EDSAC)
+
+DIAGNOSTICS
+
+An appropriate message is printed when a file cannot be opened.

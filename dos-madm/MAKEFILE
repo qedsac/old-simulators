@@ -1,0 +1,23 @@
+LFLAGS=-g
+LIBS=-ls -lg -lc
+SRC= arith.c control.c cursor.c display.c edit.c exec_ins.c \
+     execute.c fetch.c graphics.c init.c madm.c main.c  \
+     memory.c
+OBJS=arith.o control.o cursor.o display.o edit.o exec_ins.o \
+     execute.o fetch.o graphics.o init.o madm.o main.o   \
+     memory.o
+
+madm.exe: proto.h $(OBJS)
+	ln $(LFLAGS) -o $@ $(OBJS) $(LIBS)
+
+proto.h: $(SRC)
+	proto -o $@ $(SRC)
+
+$(OBJS): madm.h
+
+arith.o control.o cursor.o display.o edit.o	\
+fetch.o graphics.o init.o memory.o: display.h
+
+cursor.o display.o graphics.o: graphics.h
+
+edit.o execute.o: keyboard.h

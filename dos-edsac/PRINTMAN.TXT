@@ -1,0 +1,21 @@
+NAME
+
+tprint -- EDSAC teleprinter
+
+SYNOPSIS
+
+tprint [ file ... ]
+
+DESCRIPTION
+
+Tprint takes EDSAC teleprinter codes from the given files and prints
+their ASCII equivalents on the standard output. If no files are
+specified or - is used as a file name, the standard input is read.
+
+SEE ALSO
+
+edsac(EDSAC), punch(EDSAC)
+
+DIAGNOSTICS
+
+An appropriate message is printed when a file cannot be opened.

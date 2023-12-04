@@ -1,0 +1,34 @@
+LFLAGS=-g
+LIBS=-lc
+SRC=arith.c control.c edsac.c error.c exec_ord.c \
+     execute.c fetch.c init.c inout.c main.c  \
+     memory.c mult.c shift.c
+OBJS=arith.o control.o edsac.o error.o exec_ord.o \
+     execute.o fetch.o init.o inout.o main.o   \
+     memory.o mult.o shift.o
+
+edsac.exe: proto.h $(OBJS)
+	ln $(LFLAGS) -o $@ $(OBJS) $(LIBS)
+
+proto.h: $(SRC)
+	proto -o $@ $(SRC)
+
+$(OBJS): edsac.h
+arith.o init.o: orders.h
+inout.o main.o: inout.h
+
+punch.h: punch.c
+	proto -o $@ punch.c
+
+punch.o: punch.h
+
+punch.exe: punch.o
+	ln punch.o -lc
+
+tprint.h: tprint.c
+	proto -o $@ tprint.c
+
+tprint.o: tprint.h
+
+tprint.exe: tprint.o
+	ln tprint.o -lc
