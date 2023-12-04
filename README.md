@@ -41,6 +41,6 @@ An updated version, supporting Unicode I/O, and conforming to the C89 standard, 
 
 The DOS versions were written using [Aztec C](https://www.aztecmuseum.ca/compilers.htm#msdos) v4.1.  The C code predates the ANSI standard somewhat, using K&R-style function parameter declarations.
 
-The makefiles are  compatible with the “standard” Unix `make` utility, but do not work with the `MAKE.EXE` provided with the compilers available at [www.aztecmuseum.ca](https://www.aztecmuseum.ca).  The `proto` utility is not provided with v5.2a, but the `proto.h` file does not need to be rebuilt if function parameters are not modified and https://github.com/qedsac/old-simulators.githttps://github.com/qedsac/old-simulators.githttps://github.com/qedsac/old-simulators.githttps://github.com/qedsac/old-simulators.gitno new functions are added.
+The makefiles are  compatible with the “standard” Unix `make` utility, but do not work with the `MAKE.EXE` provided with the compilers available at [www.aztecmuseum.ca](https://www.aztecmuseum.ca).  The `proto` utility is not provided with v5.2a, but the `proto.h` file does not need to be rebuilt if function parameters are not modified and no new functions are added.
 The v5.2a download includes the source code for the graphics routines used in the DOS SSEM simulator.
 
